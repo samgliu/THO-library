@@ -27,7 +27,6 @@ function addBookToLibrary(newBook, index) {
     dbtn.innerHTML = "Remove";
     tempDiv.appendChild(rbtn);
     tempDiv.appendChild(dbtn);
-    console.log(tempDiv);
     conDiv.appendChild(tempDiv);
 }
 
@@ -36,7 +35,6 @@ function addBook(){
                             document.getElementById("author").value, 
                             document.getElementById("pages").value,
                             document.getElementById("isRead").checked);
-    console.table(tempbook);
     myLibrary.push(tempbook);
     addBookToLibrary(tempbook, myLibrary.length);
     updateDom(); 
@@ -48,6 +46,10 @@ function updateDom(){
     for (let i = 0; i < myLibrary.length; i++){
         addBookToLibrary(myLibrary[i], i);
     }
+    if (storageAvailable){
+        saveBooks();
+    }
+    
 }
 
 function idToIndex(bookid){
@@ -72,4 +74,51 @@ function openForm() {
 
 function closeForm() {
     document.getElementById("popupForm").style.display = "none";
+}
+
+function storageAvailable(type) {
+    var storage;
+    try {
+        storage = window[type];
+        var x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            (storage && storage.length !== 0);
+    }
+}
+
+function saveBooks(){
+    if (myLibrary.length > 0){
+        clearLocal();
+    }
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+function clearLocal(){
+    localStorage.removeItem('myLibrary');
+}
+
+function getBooks(){
+    if (storageAvailable){
+        const myArrayFromLocalStorage = localStorage.getItem('myLibrary');
+        if (myArrayFromLocalStorage && myArrayFromLocalStorage.length) {
+            myLibrary = JSON.parse(myArrayFromLocalStorage);
+        }
+        updateDom();
+    }
+    
 }

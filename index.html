@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <title id="title">Library</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="header">
+        <h1>Library</h1>
+    </div>
+    <div id="controls">
+        <button id="NBButton" onclick="openForm()"><strong>Add New Book</strong></button>
+        <div class=" Popup ">
+            <div class="formPopup" id="popupForm">
+                <form action="#" class="formContainer" onsubmit="addBook();return false">
+                    <h2>Please Enter Book Information</h2>
+                    <label for="Title ">
+
+                    </label>
+                    <input type="text" id="Title" placeholder="Title" name="Title" required>
+                    <label for="author">
+
+                    </label>
+                    <input type="text" id="author" placeholder="Author" name="author" required>
+                    <label for="pages">
+
+                    </label>
+                    <input type="number" id="pages" placeholder="Pages" name="pages" required>
+                    <label for="isRead">
+                        <input type="checkbox" id="isRead" name="isRead" required>
+                        <strong>isRead?</strong>
+                    </label>
+
+                    <button type="submit" class="button">Submit</button>
+                    <button type="button" class="button cancel" onclick="closeForm()">Close</button>
+                </form>
+            </div>
+        </div>
+        <div id="bookscontainer">
+
+        </div>
+
+        <script src="scripts/scripts.js"></script>
+
+
+</body>
+
+</html>

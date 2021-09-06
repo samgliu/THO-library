@@ -1,0 +1,87 @@
+body {
+    background-color: whitergb(196, 196, 196);
+    text-align: center;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    background-color: #9eceec;
+    color: white;
+    padding: 5% 10%;
+    cursor: pointer;
+    margin: 2px;
+}
+
+#NBButton {
+    border: none;
+    border-radius: 5px;
+    background-color: #9eceec;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.formPopup {
+    display: none;
+    position: fixed;
+    left: 40%;
+    top: 10%;
+    width: 20%;
+    min-width: 150px;
+    background-color: #1c87c9;
+    border: 1px solid #999999;
+}
+
+.formContainer {
+    display: grid;
+    grid-template-rows: repeat(auto, 10%);
+}
+
+.formContainer>input {
+    min-width: 90px;
+    padding: 5%;
+    margin: 2% 5%;
+    border: 1px;
+    background: #eee;
+}
+
+.cancel {
+    background-color: #cc0000;
+}
+
+#bookscontainer {
+    margin: 0 auto;
+    width: 80%;
+    min-width: 1024px;
+    height: auto;
+    background-color: rgba(53, 122, 233, 0.356);
+    display: grid;
+    grid-template-columns: repeat(4, 24%);
+    grid-gap: 1.20%;
+    padding: 1px;
+    border: 1px solid white;
+    border-radius: 10px;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.books {
+    border: 1px solid rgb(222, 243, 243);
+    border-radius: 10px;
+    min-width: 100px;
+    min-height: 200px;
+    padding: 1px;
+    margin: 1px;
+}
+.books:hover {
+    box-shadow:0 0 10px#eee;
+    color: aliceblue;
+}
+
+p {
+    font-size: medium;
+    text-align: center;
+    word-wrap:break-word;
+}
